@@ -1,36 +1,24 @@
 # fetch all tasks
+GET http://localhost:3000/api/v1/user
+###
+
 POST http://localhost:3000/api/v1/auth/signup
 Content-Type: application/json
 
 {
-  "username": "TEST",
-  "email": "test@gmail.com",
-  "password": "password"
+    "username" : "test",
+    "email": "email@gmail.com",
+    "password":"password"
 }
 
 ###
-
 POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email" : "test@gmail.com",
-  "password": "password"
+    
+    "email": "email@gmail.com",
+    "password":"password"
 }
 
 ###
-
-# create post
-POST http://localhost:3000/api/v1/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzBmMGIxYmZjNDk1ZDI0ZjNlYjVlYWEiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzI5MDQwNjk4LCJleHAiOjE3MjkxMjcwOTh9.UfJaPu5-ZHn3ExC6hBgLsiDL_J4y3jMxwrzCa3nWRqI
-Content-Type: application/json
-
-{
-  "title": "POST2",
-  "content": "CONTENT POST",
-  "image": "https://fastly.picsum.photos/id/947/200/300.jpg?hmac=xWi3fTvb1sKlC9ahIla_xr0F3Bjq9UIpXx19e7EMG4o"
-}
-
-###
-
-GET http://localhost:3000/api/v1/post

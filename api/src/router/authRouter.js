@@ -9,10 +9,10 @@ const JWT_SECRET = config.jwtSecret;
 
 router.post("/signup", async (req, res) => {
   try {
-    const salt = 10;
-
+    const salt = await bcrypt.genSalt(10);
+    console.log("Request body:", req.body); // Add this line
     const { username, email, password } = req.body;
-
+    console.log("Password received:", password);
     const hashedpassword = await bcrypt.hash(password, salt);
 
     const data = await createUser({
@@ -45,35 +45,39 @@ router.post("/login", async (req, res) => {
     email,
   });
 
-  const isMatch = await bcrypt.compare(password, userData.password);
+  if (userData) {
+    const isMatch = await bcrypt.compare(password, userData.password);
 
-  if (!isMatch) {
-    const errObj = {
-      status: false,
-      message: "invalid email or password",
+    if (!isMatch) {
+      const errObj = {
+        status: false,
+        message: "invalid email or password",
+      };
+
+      return res.status(401).send(errObj);
+    }
+
+    const token = jwt.sign(
+      {
+        userid: userData._id,
+        email: userData.email,
+      },
+      JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    const respObj = {
+      status: true,
+      message: "login successful",
+      data: {
+        token,
+      },
     };
 
-    return res.status(401).send(errObj);
+    return res.status(200).send(respObj);
+  } else {
+    console.log("error in auth");
   }
-
-  const token = jwt.sign(
-    {
-      userid: userData._id,
-      email: userData.email,
-    },
-    JWT_SECRET,
-    { expiresIn: "1d" }
-  );
-
-  const respObj = {
-    status: true,
-    message: "login successful",
-    data: {
-      token,
-    },
-  };
-
-  return res.status(200).send(respObj);
 });
 
 export default router;
