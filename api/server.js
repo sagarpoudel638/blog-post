@@ -6,6 +6,8 @@ import { connectMongoDB } from "./src/config/dbConfig.js";
 // get config file
 import { config } from "./src/config/config.js";
 
+import authRouter from "./src/router/authRouter.js"
+
 import userRouter from "./src/router/userRouter.js";
 import postRouter from "./src/router/userRouter.js";
 

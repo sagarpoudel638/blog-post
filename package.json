@@ -1,0 +1,8 @@
+{
+  "name": "blog-post",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sagarpoudel638/blog-post.git",
+  "author": "sagarpoudel638 <sagarpoudel638@gmail.com>",
+  "license": "MIT"
+}
