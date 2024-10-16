@@ -1,24 +1,24 @@
 # fetch all tasks
 GET http://localhost:3000/api/v1/user
-
+###
 
 POST http://localhost:3000/api/v1/auth/signup
-
-Content-Type: application/json;
+Content-Type: application/json
 
 {
     "username" : "test",
     "email": "email@gmail.com",
-    "password":"password",
+    "password":"password"
 }
 
-
+###
 POST http://localhost:3000/api/v1/auth/login
-
-Content-Type: application/json;
+Content-Type: application/json
 
 {
     
     "email": "email@gmail.com",
-    "password":"password",
+    "password":"password"
 }
+
+###

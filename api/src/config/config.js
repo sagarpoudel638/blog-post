@@ -5,4 +5,5 @@ export const config = {
   mongodb: {
     url: process.env.MONGODB_URL || "mongodb://localhost:27017/blog-db",
   },
+  jwtSecret: "secret",
 };
